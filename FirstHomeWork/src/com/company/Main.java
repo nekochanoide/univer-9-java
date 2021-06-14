@@ -69,7 +69,7 @@ class ReportService {
         List<Car> cars = _appContext.carsByType.get(carType);
         Comparator<Car> comparator = Comparator.comparing(x -> x.mileage);
         if (carType.hasExtraParam) {
-            comparator.thenComparing(x -> x.extraParam);
+            comparator = comparator.thenComparing(x -> x.extraParam);
         }
         return cars.stream().sorted(comparator).collect(Collectors.toList());
     }
